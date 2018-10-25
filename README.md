@@ -59,7 +59,7 @@ Give an example
 
 ## Authors
 
-* **Goran Čeko** - [PurpleBooth](https://github.com/PurpleBooth)
+* **Goran Čeko** - [GitHub](https://github.com/garthlord)
 
 ## License
 
