@@ -16,13 +16,13 @@ composer
 
 ### Installing
 
-Pull source from origin
-Rename .env.dist to .env and enter your real DB username and password
-In terminal run 'php bin/console doctrine:database:create' function
-php bin/console doctrine:fixtures:load
-Build app
-Run server
-Go To ...
+* Pull source from origin
+* Rename .env.dist to .env and enter your real DB username and password
+* In terminal run 'php bin/console doctrine:database:create' function
+* php bin/console doctrine:fixtures:load
+* Build app
+* Run server
+* Go To ...
 
 ```
 Give the example
