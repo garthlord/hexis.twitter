@@ -8,48 +8,24 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
 ```
+php >= 7.2
+mysql
 composer
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Pull source from origin
+Rename .env.dist to .env and enter your real DB username and password
+In terminal run 'php bin/console doctrine:database:create' function
+php bin/console doctrine:fixtures:load
+Build app
+Run server
+Go To ...
 
 ```
 Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
 ```
 
 ## Built With
@@ -59,7 +35,7 @@ Give an example
 
 ## Authors
 
-* **Goran Čeko** - [GitHub](https://github.com/garthlord)
+* **Goran Čeko** - [GitHub](https://github.com/garthlord) - [LinkedIn](https://www.linkedin.com/in/goranceko11/)
 
 ## License
 
