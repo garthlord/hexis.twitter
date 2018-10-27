@@ -3,10 +3,18 @@
 {% block body %}
 {{ form_start(form) }}
     <h1>Register</h1>
-    {{ form_row(form.email) }}
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
-    <button type="submit">Register</button>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'E-mail Address'} }) }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Password'} }) }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Repeat Password'} }) }}
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Register</button>
 {{ form_end(form) }}
-<a href="{{ path('app_login') }}">Sign in here</a>
+or <a href="{{ path('app_login') }}">Sign in here</a>
 {% endblock %}

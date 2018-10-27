@@ -16,7 +16,7 @@ class DefaultController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $limit = 1;
+        $limit = 5;
         $page = $request->query->get('page', 1);
         
         $posts = $this->getDoctrine()

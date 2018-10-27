@@ -1,35 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Homepage</h1>
+    <h1 class="display-4">Posts</h1>
+    <p class="lead">See all posts in descending order.</p>   
     {% for post in posts %}
-        <div>
-            <p>Post by {{ post.user.email }} on {{ post.createdAt|date("F d, Y H:i") }}.</p>
+        <div class="jumbotron">
+            <p class="float-left">{{ post.createdAt|date("F d, Y H:i") }} by {{ post.user.email }}</p>
             {% if is_granted("ROLE_SUPERUSER") or app.user.email == post.user.email %}
-                <p>delete</p>
+                <p class="float-right">delete</p>
             {% endif %}
-            <p>{{ post.post }}</p>
+            <p class="lead">{{ post.post }}</p>
         </div>
     {% endfor %}
     {% if maxPages > 1 %}
         <ul class="pagination pagination-sm">
             {# `«` arrow  #}
-            <li {{ thisPage == 1 ? 'class="disabled"' }}>
-                <a href="{{ path('app_homepage', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+            <li class="page-item{{ thisPage == 1 ? ' disabled' }}">
+                <a class="page-link" href="{{ path('app_homepage', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
             </li>
 
             {# Render each page number #}
             {% for i in 1..maxPages %}
                 {% if i <= thisPage + 5 and i >= thisPage - 5 %}
-                <li {{ thisPage == i ? 'class="active"' }}>
-                    <a href="{{ path('app_homepage', {page: i}) }}">{{ i }}</a>
+                <li class="page-item{{ thisPage == i ? ' active' }}">
+                    <a class="page-link" href="{{ path('app_homepage', {page: i}) }}">{{ i }}</a>
                 </li>
                 {% endif %}
             {% endfor %}
 
             {# `»` arrow #}
-            <li {{ thisPage == maxPages ? 'class="disabled"' }}>
-                <a href="{{ path('app_homepage', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+            <li class="page-item{{ thisPage == maxPages ? ' disabled' }}">
+                <a class="page-link" href="{{ path('app_homepage', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
             </li>
         </ul>
     {% endif %}

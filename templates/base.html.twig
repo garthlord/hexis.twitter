@@ -3,27 +3,33 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Hexis.Twitter{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        {% endblock %}
     </head>
     <body>
-        <header>
+        <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
             {% block header %}
-                <p>Header</p>
+                <h5>Hexis.Twitter</h5>
                 {% if app.user.email is defined %}
-                    <p>Logged in as: {{ app.user.email }}</p>
-                    <a href="{{ path('app_logout') }}">Log Out</a>
+                    <nav class="my-2 my-md-0 mr-md-3">
+                        <span class="p-2 text-dark" href="#">Logged in as: {{ app.user.email }}</span>
+                    </nav>
+                    <a class="btn btn-outline-primary" href="{{ path('app_logout') }}">Log Out</a>
                 {% endif %}
             {% endblock %}
         </header>
-        <content>
+        <div class="text-center">
             {% block body %}
             {% endblock %}
-        </content>
-        <footer>
-            {% block footer %}
-                <p>Footer</p>
-            {% endblock %}
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">Made by <a href="https://github.com/garthlord/hexis.twitter" target="_blank">Goran Čeko</a></span>
+            </div>
         </footer>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('build/app.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
