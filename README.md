@@ -14,26 +14,56 @@ mysql
 composer
 node.js
 yarn
+git
 ```
 
 ### Installing
 
 * Pull source from origin
-* Rename .env.dist to .env and enter your real DB username and password
-* In terminal run 'php bin/console doctrine:database:create' function
-* php bin/console doctrine:fixtures:load
-* Build app
-* Run server
-* Go To ...
+```
+git clone https://github.com/garthlord/hexis.twitter.git
+```
 
+* Copy .env.dist to .env and enter your real DB username and password to DATABASE_URL variable.
+Db name is not important because Symfony will create it for you.
 ```
-Give the example
+cd hexis.twitter/
+cp .env.dist .env
+nano .env
 ```
+
+* Build php app
+```
+composer install
+```
+
+* Build node.js app
+```
+yarn install
+yarn encore production
+```
+
+* Create DataBase, Migrate and fill DataFixtures
+```
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load
+```
+
+* Run server
+```
+php bin/console server:run
+```
+
+* Open browser and go to 127.0.0.1:8000
 
 ## Built With
 
-* [Symfony 4.1](https://symfony.com/doc/4.1/setup.html) - PHP Framework
-* [Composer](https://getcomposer.org/) - Dependency Management
+* [PHP 7.2](http://php.net/) - PHP
+* [Symfony 4.1](https://symfony.com/) - PHP Framework
+* [Node.js 8.12](https://nodejs.org/) - Node.js
+* [Composer 1.6](https://getcomposer.org/) - Dependency Management
+* [Yarn 1.10](https://yarnpkg.com/) - Dependency Management
 
 ## Authors
 
