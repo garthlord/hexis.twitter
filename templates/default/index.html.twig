@@ -1,13 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% for type, flashes in app.session.flashbag.all %}
+        {% for flash in flashes %}
+            <div class="alert alert-{{ type }}">
+                {{ flash }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    {% if form %}
+        {{ form_start(form) }}
+            <h1>Create new post</h1>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    {{ form_widget(form.post, { 'attr': {'class': 'form-control', 'placeholder': 'Enter 5 to 255 character long post'} }) }}
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Post</button>
+        {{ form_end(form) }}
+        <hr />
+    {% endif %}
+
     <h1 class="display-4">Posts</h1>
     <p class="lead">See all posts in descending order.</p>   
     {% for post in posts %}
         <div class="jumbotron">
-            <p class="float-left">{{ post.createdAt|date("F d, Y H:i") }} by {{ post.user.email }}</p>
+            <p class="float-left text-muted">{{ post.createdAt|date("F d, Y H:i") }} by {{ post.user.email }}</p>
             {% if is_granted("ROLE_SUPERUSER") or app.user.email == post.user.email %}
-                <p class="float-right">delete</p>
+                <p class="float-right"><a href="{{ path('app_post_delete', {post: post.id}) }}">delete</a></p>
             {% endif %}
             <p class="lead">{{ post.post }}</p>
         </div>

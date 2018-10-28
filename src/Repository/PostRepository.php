@@ -24,6 +24,7 @@ class PostRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('p')
             ->innerJoin("p.user", "u")
+            ->where('p.active = 1')
             ->orderBy('p.created_at', 'DESC')
             ->getQuery();
 
